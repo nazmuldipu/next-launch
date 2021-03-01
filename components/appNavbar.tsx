@@ -1,10 +1,12 @@
-import Link from "next/link";
-import Image from 'next/image'
-import { Nav, Navbar, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
 
-export default function AppNavbar() {
+
+export default function AppNavbar({ auth, logout }: { auth: boolean, logout: any }) {
+    
     return (<Navbar bg="light" expand="lg">
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="/">
             <Image
                 src="/images/logo.png"
                 width={130}
@@ -14,7 +16,7 @@ export default function AppNavbar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-                <span className="nav-link"><Link href="/">Home</Link></span>
+                <span className="nav-link"><Link href="/">Home </Link></span>
                 <span className="nav-link"><Link href="/dashboard">Dashboard</Link></span>
                 <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                     <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
@@ -25,9 +27,18 @@ export default function AppNavbar() {
                 </NavDropdown>
             </Nav>
             <Nav>
-                <span className="nav-link"><Link href="/login">Login</Link></span>
-                <span className="nav-link"><Link href="/register">Register</Link></span>
-                <Nav.Link>Logout</Nav.Link>
+                {auth ?
+                    <>
+                        <Nav.Link onClick={logout}>Logout</Nav.Link>
+                    </>
+                    :
+                    <>
+                        <span className="nav-link"><Link href="/login">Login</Link></span>
+                        <span className="nav-link"><Link href="/register">Register</Link></span>
+                    </>
+                }
+
+
             </Nav>
         </Navbar.Collapse>
     </Navbar>);

@@ -1,7 +1,7 @@
-import MainLayout from "../../components/layouts/mainLayouts";
+import AppLayout from "../../components/layouts/appLayout";
 
 export default function Dashboard() {
     return (
-        <MainLayout> Dashboard Page</MainLayout>
+        <AppLayout> Dashboard Page</AppLayout>
     );
 }
