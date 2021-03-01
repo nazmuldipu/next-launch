@@ -1,22 +1,21 @@
+import AppLayout from "../../../components/layouts/appLayout";
 import Head from 'next/head';
 
-import AppLayout from '../../components/layouts/appLayout';
-
-const Dashboard = () => {
+const Ships = () => {
     return (
         <>
             <Head>
                 <title>Ship | Dashboard</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            Dashboard Page
+            Ships Page
         </>
     );
 }
 
-Dashboard.getLayout = page => (
+Ships.getLayout = page => (
     <AppLayout>
         {page}
     </AppLayout>
 )
-export default Dashboard
+export default Ships;

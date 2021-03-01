@@ -1,7 +1,5 @@
 import dynamic from 'next/dynamic';
-import Router from 'next/router';
 
-import Auth from '../../lib/authServices';
 
 const AppNavbar = dynamic(
     () => import('../appNavbar'),
@@ -9,14 +7,10 @@ const AppNavbar = dynamic(
 )
 
 export default function AppLayout({ children }) {
-    const handleLogout = () => {
-        console.log('handleLogout')
-        Auth.logout();
-        Router.push('/login');
-    }
+    
     return (
         <>
-            <AppNavbar auth={Auth.isAuthenticated()} logout={handleLogout} />
+            <AppNavbar />
             <div>
                 {children}
             </div>

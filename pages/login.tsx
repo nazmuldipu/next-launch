@@ -6,7 +6,7 @@ import LoginForm from '../components/Forms/loginForm';
 import AuthLayout from '../components/layouts/authLayout';
 import auth from '../lib/authServices';
 
-export default function Login() {
+const Login = () => {
     const [errorMessage, setErrorMessage] = useState("");
     const [loading, setLoading] = useState(false);
 
@@ -26,9 +26,15 @@ export default function Login() {
             <Head>
                 <title>Ship | Login</title>
             </Head>
-            <AuthLayout name={'login'}>
-                <LoginForm onSubmit={handleSubmit} error={errorMessage} />
-            </AuthLayout>
+            <LoginForm onSubmit={handleSubmit} error={errorMessage} />
         </>
     );
 }
+
+// Login.layout = AuthLayout;
+Login.getLayout = page => (
+    <AuthLayout name={'login'}>
+        {page}
+    </AuthLayout>
+)
+export default Login;

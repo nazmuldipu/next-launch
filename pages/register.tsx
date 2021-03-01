@@ -1,15 +1,20 @@
 import AuthLayout from "../components/layouts/authLayout";
 import Head from 'next/head'
 
-export default function Register() {
+const Register = () => {
     return (
         <>
             <Head>
-                <title>Ship | Login</title>
+                <title>Ship | Rgister</title>
             </Head>
-            <AuthLayout name={'register'}>
-                <p>Register Page</p>
-            </AuthLayout>
+            <p>Register Page</p>
         </>
     );
 }
+
+Register.getLayout = page => (
+    <AuthLayout name={'register'}>
+        {page}
+    </AuthLayout>
+)
+export default Register;

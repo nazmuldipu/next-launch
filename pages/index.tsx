@@ -2,20 +2,26 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import AppLayout from '../components/layouts/appLayout';
 
-export default function Home() {
+const Home = () => {
   return (
     <>
-      <AppLayout>
-        <div className={styles.container}>
-          <Head>
-            <title>Ship | Online ship ticketing</title>
-            <link rel="icon" href="/favicon.ico" />
-          </Head>
-          <div className="cotainer">
-            <h1>Home index</h1>
-          </div>
+      <Head>
+        <title>Ship | Online ship ticketing</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <div className={styles.container}>
+
+        <div className="cotainer">
+          <h1>Home index</h1>
         </div>
-      </AppLayout>
+      </div>
     </>
   )
 }
+
+Home.getLayout = page => (
+  <AppLayout>
+    {page}
+  </AppLayout>
+)
+export default Home;
