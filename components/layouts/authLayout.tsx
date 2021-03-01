@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import styles from '../../styles/Auth.module.css';
 
-export default function AuthLayout({ children }) {
+export default function AuthLayout({ children, name }) {
     return (
         <div className={styles.outerBox}>
             <div className="container">
@@ -15,12 +15,14 @@ export default function AuthLayout({ children }) {
                                 <div className="row">
                                     <div className="offset-md-2 col-md-8 p-3 pt-5">
                                         <Link href="/">
-                                            <Image
-                                                className="clickable"
-                                                src="/images/logo.png"
-                                                width={290}
-                                                height={110}
-                                            />
+                                            <a>
+                                                <Image
+                                                    className="clickable"
+                                                    src="/images/logo.png"
+                                                    width={290}
+                                                    height={110}
+                                                />
+                                            </a>
                                         </Link>
                                         <div className="row">
                                             <div className="col-3 p-0">
@@ -39,11 +41,21 @@ export default function AuthLayout({ children }) {
                                     </div>
                                 </div>
                             </div>
+                            
                             <div className="col-md-6 bg-light">
+                                <div className="bg-light pb-3">
+                                    <div className="d-flex">
+                                        <Link href="/login">
+                                            <a className={'btn flex-fill ' + styles.btnTop + ' ' + (name === 'login' ? styles.active : '')}>Sign in</a>
+                                        </Link>
+                                        <Link href="/register">
+                                            <a className={'btn flex-fill ' + styles.btnTop + ' ' + (name === 'register' ? styles.active : '')}>Register</a>
+                                        </Link>
+                                    </div>
 
-                                {/* Children insertion here */}
-                                <main>{children}</main>
-
+                                    {/* Children insertion here */}
+                                    <main>{children}</main>
+                                </div>
                             </div>
                         </div>
                     </div>
